@@ -1,4 +1,4 @@
-# KH2FM Load Remover for PCSX2 v1.6 and PC
+# KH2FM Load Remover for PCSX2 v1.6, PCSX2-EX, and PC
 
 *Created by: AliosGaming and ZakTheRobot*
 
@@ -21,9 +21,9 @@ What you need:
 	
 5. You will want two timers in your Livesplit layout in order for the script to work. You can add more timers to your layout by clicking the big "+" button again in the Layout Editor screen and selecting "Timer". Set the "Timing Method" in one timer to "Real Time" and set the other one to "Game Time". "Real Time" will run like normal and will never pause, while "Game Time" will pause during loads and room transitions.
 
-**NOTE: Be sure to save your layout after setting everything up. If you dont then you will have to go through the process all over again every time you close and re-open livesplit**
+![alt text](https://i.imgur.com/G9Pb7Wh.png)
 
-![alt text] (https://i.imgur.com/G9Pb7Wh.png)
+**NOTE: Be sure to save your layout after setting everything up. If you dont then you will have to go through the process all over again every time you close and re-open livesplit**
 
 6. That is it! Once LiveSplit and your game are both open the script will auto attach to your game. The script will work for Emulator or PC automatically and you don't need to change anything if you swap between the two. If you would like to verify that the script has attached to your game then you can check by opening up the "Scriptable Auto Splitter" settings again and looking to the right of the "Options:" section. You should see a message saying "Game Version:" followed by either "EMULATOR", "EMULATOR-EX", or "GLOBAL" depending on if you are using PCSX2, PCSX2-EX, or PC from the Epic Games Store respectively. 
 
