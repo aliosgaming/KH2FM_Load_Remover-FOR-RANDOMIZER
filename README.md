@@ -23,6 +23,8 @@ What you need:
 
 **NOTE: Be sure to save your layout after setting everything up. If you dont then you will have to go through the process all over again every time you close and re-open livesplit**
 
+![alt text] (https://i.imgur.com/G9Pb7Wh.png)
+
 6. That is it! Once LiveSplit and your game are both open the script will auto attach to your game. The script will work for Emulator or PC automatically and you don't need to change anything if you swap between the two. If you would like to verify that the script has attached to your game then you can check by opening up the "Scriptable Auto Splitter" settings again and looking to the right of the "Options:" section. You should see a message saying "Game Version:" followed by either "EMULATOR", "EMULATOR-EX", or "GLOBAL" depending on if you are using PCSX2, PCSX2-EX, or PC from the Epic Games Store respectively. 
 
 **TLDR:**
