@@ -3,7 +3,7 @@
 *Created by: AliosGaming and ZakTheRobot*
 
 What you need:
- - Livesplit <- Your timer
+ - [Livesplit](https://livesplit.org/) <- Your timer
  - KH2FM Load Remover (PC and EMU).asl <- The script you downloaded from this github
  
 ## How to install:
