@@ -2,7 +2,8 @@
 
 *Created by: AliosGaming and ZakTheRobot*
 
-*DISCLAIMER: This Load Remover is only intended for use during KH2FM Randomizer Races and Practice*
+***DISCLAIMER: This Load Remover is only intended for use during KH2FM Randomizer Races and Practice***
+
 What you need:
  - [Livesplit](https://livesplit.org/) <- Your timer
  - KH2FM Load Remover (PC and EMU).asl <- The script you downloaded from this github
