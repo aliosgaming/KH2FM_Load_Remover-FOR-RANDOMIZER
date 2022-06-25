@@ -38,7 +38,7 @@ state("PCSX2", "EMULATOR-EX")
 init
 {
 	vars.infinalfights = 0;
-	if(modules.First().ModuleMemorySize == 46305280){
+	if(modules.First().ModuleMemorySize == 46305280 || modules.First().ModuleMemorySize == 58462208){
 		version = "GLOBAL";
 		refreshRate = 60;
 	}
