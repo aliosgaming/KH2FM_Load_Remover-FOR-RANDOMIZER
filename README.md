@@ -6,7 +6,7 @@
 
 What you need:
  - [Livesplit](https://livesplit.org/) <- Your timer
- - KH2FM Load Remover (PC and EMU) v2.asl <- The script you downloaded from this github
+ - KH2FM Load Remover (PC and EMU) v2.1.asl <- The script you downloaded from this github
  
 ## How to install:
  
