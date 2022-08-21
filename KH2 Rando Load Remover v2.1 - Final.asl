@@ -2,13 +2,15 @@ state("DUMMY", "NOVERSIONFOUND"){}
 
 state("PCSX2", "EMULATOR")
 {
-	uint black : "pcsx2.exe", 0x0123E4E4, 0x3B0;
+	byte black : "pcsx2.exe", 0x0123E4E4, 0x3B3;
 	byte load : "pcsx2.exe", 0x0123E4F4, 0x708;
 	uint start : "pcsx2.exe", 0x011E4D78, 0x610;
 	uint startup_menus : "pcsx2.exe", 0x0123E53C, 0x3CC;
 	byte keyholetransition : "pcsx2.exe", 0x123E4EC, 0x220;
 	byte world : "pcsx2.exe", 0x0123E46C, 0xAE0;
 	byte room : "pcsx2.exe", 0x0123E46C, 0xAE1;
+	byte prevWorld : "pcsx2.exe", 0x0123E46C, 0xB10;
+	byte prevRoom : "pcsx2.exe", 0x0123E46C, 0xB11; 
 	byte btlend : "pcsx2.exe", 0x01244CE4, 0xC0;
 }
 
@@ -20,18 +22,22 @@ state("KINGDOM HEARTS II FINAL MIX", "GLOBAL")
 	uint roomTransition : "KINGDOM HEARTS II FINAL MIX.exe", 0x715568;
 	byte world : "KINGDOM HEARTS II FINAL MIX.exe", 0x714DB8;
 	byte room : "KINGDOM HEARTS II FINAL MIX.exe", 0x714DB9;
+	byte prevWorld : "KINGDOM HEARTS II FINAL MIX.exe", 0x714DE8;
+	byte prevRoom : "KINGDOM HEARTS II FINAL MIX.exe", 0x714DE9;
 	byte btlend : "KINGDOM HEARTS II FINAL MIX.exe", 0x2A0D3E0;
 }
 
 state("PCSX2", "EMULATOR-EX")
 {
-	uint black : "pcsx2.exe", 0x0127F8A4, 0x3B0;
+	byte black : "pcsx2.exe", 0x0127F8A4, 0x3B3;
 	byte load : "pcsx2.exe", 0x127F8B4, 0x708;
 	uint start : "pcsx2.exe", 0x01266D78, 0x660;
 	uint startup_menus : "pcsx2.exe", 0x127F8FC, 0x3CC;
 	byte keyholetransition : "pcsx2.exe", 0x127F8AC, 0x220;
 	byte world : "pcsx2.exe", 0x0127F82C, 0xAE0;
 	byte room : "pcsx2.exe", 0x0127F82C, 0xAE1;
+	byte prevWorld : "pcsx2.exe", 0x0127F82C, 0xB10;
+	byte prevRoom : "pcsx2.exe", 0x0127F82C, 0xB11;
 	byte btlend : "pcsx2.exe", 0x012860A4, 0xC0;
 }
 
@@ -81,7 +87,18 @@ start
 isLoading
 {
 	if (version=="EMULATOR" || version=="EMULATOR-EX") {
-		return ((current.black == 2147483648 || current.load != 0) && current.keyholetransition==0);
+		if(current.prevWorld==4 && current.prevRoom==26){
+			if(current.black==128){
+				return true;
+			}
+			if(current.black==0 && current.load !=0){
+				return true;
+			}
+		}
+		if(current.prevWorld!=4 && current.prevRoom!=26) {
+			return ((current.black == 128 || current.load != 0) && current.keyholetransition==0);
+		}
+		return false;
 	}
 	else if (version=="GLOBAL") {
 		return (current.black == 128 || current.load);
