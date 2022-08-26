@@ -27,7 +27,7 @@ state("KINGDOM HEARTS II FINAL MIX", "GLOBAL")
 	byte btlend : "KINGDOM HEARTS II FINAL MIX.exe", 0x2A0D3E0;
 }
 
-state("KINGDOM HEARTS II FINAL MIX", "RE-FIXED")
+state("KINGDOM HEARTS II FINAL MIX", "RE-FINED")
 {
 	byte black : "KINGDOM HEARTS II FINAL MIX.exe", 0xAB8BC7;
 	bool load : "KINGDOM HEARTS II FINAL MIX.exe", 0x8E9DA3;
@@ -69,8 +69,8 @@ init
 		version = "EMULATOR-EX";
 		refreshRate = 60;
 	}
-	else if(game.MainWindowTitle.Contains("Re:Fixed")) {
-		version = "RE-FIXED";
+	else if(game.MainWindowTitle.Contains("Re:Fined")) {
+		version = "RE-FINED";
 		refreshRate = 60;
 	}
 	else {
@@ -87,7 +87,7 @@ start
 			}
 		}
 	}
-	else if (version=="GLOBAL" || version=="RE-FIXED") {
+	else if (version=="GLOBAL" || version=="RE-FINED") {
 		if (current.start == 0 && old.start == 132) {
 			return true;
 		}
@@ -117,7 +117,7 @@ isLoading
 		}
 		return false;
 	}
-	else if (version=="GLOBAL" || version=="RE-FIXED") {
+	else if (version=="GLOBAL" || version=="RE-FINED") {
 		return (current.black == 128 || current.load);
 	}
 }
@@ -136,7 +136,7 @@ split
 			}
 		}
 	}
-	else if (version=="GLOBAL" || version=="RE-FIXED") {
+	else if (version=="GLOBAL" || version=="RE-FINED") {
 		if(vars.infinalfights==0) {
 			if(current.world==18 && current.room==25) {
 				vars.infinalfights=1;
