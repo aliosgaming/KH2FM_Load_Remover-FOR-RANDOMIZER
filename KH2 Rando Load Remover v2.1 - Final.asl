@@ -2,7 +2,7 @@ state("DUMMY", "NOVERSIONFOUND"){}
 
 state("PCSX2", "EMULATOR")
 {
-	uint black : "pcsx2.exe", 0x0123E4E4, 0x3B0;
+	byte black : "pcsx2.exe", 0x0123E4E4, 0x3B3;
 	byte load : "pcsx2.exe", 0x0123E4F4, 0x708;
 	uint start : "pcsx2.exe", 0x011E4D78, 0x610;
 	uint startup_menus : "pcsx2.exe", 0x0123E53C, 0x3CC;
@@ -42,7 +42,7 @@ state("KINGDOM HEARTS II FINAL MIX", "RE-FIXED")
 
 state("PCSX2", "EMULATOR-EX")
 {
-	uint black : "pcsx2.exe", 0x0127F8A4, 0x3B0;
+	byte black : "pcsx2.exe", 0x0127F8A4, 0x3B3;
 	byte load : "pcsx2.exe", 0x127F8B4, 0x708;
 	uint start : "pcsx2.exe", 0x01266D78, 0x660;
 	uint startup_menus : "pcsx2.exe", 0x127F8FC, 0x3CC;
@@ -69,8 +69,7 @@ init
 		version = "EMULATOR-EX";
 		refreshRate = 60;
 	}
-	else if(game.MainWindowTitle.Contains("Re:Fixed"))
-	{
+	else if(game.MainWindowTitle.Contains("Re:Fixed")) {
 		version = "RE-FIXED";
 		refreshRate = 60;
 	}
@@ -104,8 +103,19 @@ start
 
 isLoading
 {
-	if (version=="EMULATOR" || version=="EMULATOR-EX"){
-		return ((current.black == 2147483648 || current.load != 0) && current.keyholetransition==0);
+	if (version=="EMULATOR" || version=="EMULATOR-EX") {
+		if(current.prevWorld==4 && current.prevRoom==26){
+			if(current.black==128){
+				return true;
+			}
+			if(current.black==0 && current.load !=0){
+				return true;
+			}
+		}
+		if(current.prevWorld!=4 && current.prevRoom!=26) {
+			return ((current.black == 128 || current.load != 0) && current.keyholetransition==0);
+		}
+		return false;
 	}
 	else if (version=="GLOBAL" || version=="RE-FIXED") {
 		return (current.black == 128 || current.load);
