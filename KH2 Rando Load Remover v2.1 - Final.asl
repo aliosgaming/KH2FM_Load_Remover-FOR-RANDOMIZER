@@ -17,6 +17,7 @@ state("PCSX2", "EMULATOR")
 state("KINGDOM HEARTS II FINAL MIX", "GLOBAL")
 {
 	byte black : "KINGDOM HEARTS II FINAL MIX.exe", 0xAB8BC7;
+	byte loadscreen: "KINGDOM HEARTS II FINAL MIX.exe", 0x741320;
 	bool load : "KINGDOM HEARTS II FINAL MIX.exe", 0x8E9DA3;
 	uint start : "KINGDOM HEARTS II FINAL MIX.exe", 0x00BEBD90, 0x1AC;
 	uint roomTransition : "KINGDOM HEARTS II FINAL MIX.exe", 0x715568;
@@ -30,6 +31,7 @@ state("KINGDOM HEARTS II FINAL MIX", "GLOBAL")
 state("KINGDOM HEARTS II FINAL MIX", "RE-FINED")
 {
 	byte black : "KINGDOM HEARTS II FINAL MIX.exe", 0xAB8BC7;
+	byte loadscreen: "KINGDOM HEARTS II FINAL MIX.exe", 0x741320;
 	bool load : "KINGDOM HEARTS II FINAL MIX.exe", 0x8E9DA3;
 	uint start : "KINGDOM HEARTS II FINAL MIX.exe", 0x00BEBD90, 0x1AC;
 	uint roomTransition : "KINGDOM HEARTS II FINAL MIX.exe", 0x715568;
@@ -118,7 +120,7 @@ isLoading
 		return false;
 	}
 	else if (version=="GLOBAL" || version=="RE-FINED") {
-		return (current.black == 128 || current.load);
+		return (current.black == 128 || current.load && current.loadscreen != 3);
 	}
 }
 
