@@ -1,3 +1,4 @@
+//v2.3
 state("DUMMY", "NOVERSIONFOUND"){}
 
 state("PCSX2", "EMULATOR")
