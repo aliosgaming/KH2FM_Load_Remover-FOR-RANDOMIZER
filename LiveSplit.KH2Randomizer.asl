@@ -1,3 +1,4 @@
+//v2.3
 state("DUMMY", "NOVERSIONFOUND"){}
 
 state("PCSX2", "EMULATOR")
@@ -14,18 +15,32 @@ state("PCSX2", "EMULATOR")
 	byte btlend : "pcsx2.exe", 0x01244CE4, 0xC0;
 }
 
-state("KINGDOM HEARTS II FINAL MIX", "GLOBAL")
+state("KINGDOM HEARTS II FINAL MIX", "GLOBAL-EPIC")
 {
-	byte black : "KINGDOM HEARTS II FINAL MIX.exe", 0xAB8BC7;
-	byte loadscreen: "KINGDOM HEARTS II FINAL MIX.exe", 0x741320;
-	bool load : "KINGDOM HEARTS II FINAL MIX.exe", 0x8E9DA3;
-	uint start : "KINGDOM HEARTS II FINAL MIX.exe", 0x00BEBD90, 0x1AC;
-	uint roomTransition : "KINGDOM HEARTS II FINAL MIX.exe", 0x715568;
-	byte world : "KINGDOM HEARTS II FINAL MIX.exe", 0x714DB8;
-	byte room : "KINGDOM HEARTS II FINAL MIX.exe", 0x714DB9;
-	byte prevWorld : "KINGDOM HEARTS II FINAL MIX.exe", 0x714DE8;
-	byte prevRoom : "KINGDOM HEARTS II FINAL MIX.exe", 0x714DE9;
-	byte btlend : "KINGDOM HEARTS II FINAL MIX.exe", 0x2A0D3E0;
+	byte black : "KINGDOM HEARTS II FINAL MIX.exe", 0xABAE07;
+	byte loadscreen: "KINGDOM HEARTS II FINAL MIX.exe", 0x743350;
+	bool load : "KINGDOM HEARTS II FINAL MIX.exe", 0x8EBFF3;
+	uint start : "KINGDOM HEARTS II FINAL MIX.exe", 0xBEE0F0, 0x1AC;
+	uint roomTransition : "KINGDOM HEARTS II FINAL MIX.exe", 0x7175A8;
+	byte world : "KINGDOM HEARTS II FINAL MIX.exe", 0x716DF8;
+	byte room : "KINGDOM HEARTS II FINAL MIX.exe", 0x716DF9;
+	byte prevWorld : "KINGDOM HEARTS II FINAL MIX.exe", 0x716E28;
+	byte prevRoom : "KINGDOM HEARTS II FINAL MIX.exe", 0x716E29;
+	byte btlend : "KINGDOM HEARTS II FINAL MIX.exe", 0x2A0F720;
+}
+
+state("KINGDOM HEARTS II FINAL MIX", "GLOBAL-STEAM")
+{
+	byte black : "KINGDOM HEARTS II FINAL MIX.exe", 0xABB347;
+	byte loadscreen: "KINGDOM HEARTS II FINAL MIX.exe", 0x7435D0;
+	bool load : "KINGDOM HEARTS II FINAL MIX.exe", 0x8EC543;
+	uint start : "KINGDOM HEARTS II FINAL MIX.exe", 0xBEE630, 0x1AC;
+	uint roomTransition : "KINGDOM HEARTS II FINAL MIX.exe", 0x7177B8;
+	byte world : "KINGDOM HEARTS II FINAL MIX.exe", 0x717008;
+	byte room : "KINGDOM HEARTS II FINAL MIX.exe", 0x717009;
+	byte prevWorld : "KINGDOM HEARTS II FINAL MIX.exe", 0x717038;
+	byte prevRoom : "KINGDOM HEARTS II FINAL MIX.exe", 0x717039;
+	byte btlend : "KINGDOM HEARTS II FINAL MIX.exe", 0x2A0FC60;
 }
 
 state("KINGDOM HEARTS II FINAL MIX", "RE-FINED")
@@ -59,21 +74,26 @@ state("PCSX2", "EMULATOR-EX")
 init
 {
 	vars.infinalfights = 0;
-	if(modules.First().ModuleMemorySize == 46305280 || modules.First().ModuleMemorySize == 58462208){
-		version = "GLOBAL";
-		refreshRate = 60;
+	var ba = modules.First().BaseAddress;
+	print(modules.First().ModuleMemorySize.ToString());
+	Thread.Sleep(2000);
+	if (modules.First().ModuleMemorySize == 46313472) { 
+        	if (memory.ReadValue<int>(ba + 0x9A70B0) == 0x4A32484B) {
+            		version = "GLOBAL-EPIC";
+		} 
+		else if (memory.ReadValue<int>(ba + 0x9A9830) == 0x4A32484B){
+			version = "GLOBAL-STEAM";
+			print(version);
+		}
 	}
 	else if(modules.First().ModuleMemorySize == 47538176){
 		version = "EMULATOR";
-		refreshRate = 60;
 	}
 	else if(modules.First().ModuleMemorySize == 47816704) {
 		version = "EMULATOR-EX";
-		refreshRate = 60;
 	}
 	else if(game.MainWindowTitle.Contains("Re:Fined")) {
 		version = "RE-FINED";
-		refreshRate = 60;
 	}
 	else {
 		version = "NOVERSIONFOUND";
@@ -89,7 +109,7 @@ start
 			}
 		}
 	}
-	else if (version=="GLOBAL" || version=="RE-FINED") {
+	else if (version=="GLOBAL-EPIC" || version=="RE-FINED" || version=="GLOBAL-STEAM") {
 		if (current.start == 0 && old.start == 132) {
 			return true;
 		}
@@ -119,7 +139,7 @@ isLoading
 		}
 		return false;
 	}
-	else if (version=="GLOBAL" || version=="RE-FINED") {
+	else if (version=="GLOBAL-EPIC" || version=="RE-FINED" || version=="GLOBAL-STEAM") {
 		return (current.black == 128 || current.load && current.loadscreen != 3);
 	}
 }
@@ -138,7 +158,7 @@ split
 			}
 		}
 	}
-	else if (version=="GLOBAL" || version=="RE-FINED") {
+	else if (version=="GLOBAL-EPIC" || version=="RE-FINED" || version=="GLOBAL-STEAM") {
 		if(vars.infinalfights==0) {
 			if(current.world==18 && current.room==25) {
 				vars.infinalfights=1;
