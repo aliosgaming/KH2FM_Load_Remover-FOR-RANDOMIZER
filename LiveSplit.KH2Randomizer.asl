@@ -100,7 +100,6 @@ init
 
 start 
 {
-	print("START");
 	if (version=="EMULATOR") {
 		if (current.startup_menus == 0 && old.startup_menus == 2) {
 			if (current.start == 2844832) {
@@ -124,7 +123,6 @@ start
 
 isLoading
 {
-	print("IS LOADING");
 	if (version=="EMULATOR" || version=="EMULATOR-EX") {
 		if(current.prevWorld==4 && current.prevRoom==26){
 			if(current.black==128){
@@ -146,7 +144,6 @@ isLoading
 
 split
 {
-	print("SPLIT");
 	if (version=="EMULATOR" || version=="EMULATOR-EX") {
 		if(vars.infinalfights==0) {
 			if(current.world==18 && current.room==25) {
