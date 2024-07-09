@@ -18,7 +18,7 @@ state("PCSX2", "EMULATOR")
 state("KINGDOM HEARTS II FINAL MIX", "GLOBAL-EPIC")
 {
 	byte black : "KINGDOM HEARTS II FINAL MIX.exe", 0xABAE07;
-	byte loadscreen: "KINGDOM HEARTS II FINAL MIX.exe", 0x743350;
+	byte loadscreen : "KINGDOM HEARTS II FINAL MIX.exe", 0x743350;
 	bool load : "KINGDOM HEARTS II FINAL MIX.exe", 0x8EBFF3;
 	uint start : "KINGDOM HEARTS II FINAL MIX.exe", 0xBEE0F0, 0x1AC;
 	uint roomTransition : "KINGDOM HEARTS II FINAL MIX.exe", 0x7175A8;
@@ -32,7 +32,7 @@ state("KINGDOM HEARTS II FINAL MIX", "GLOBAL-EPIC")
 state("KINGDOM HEARTS II FINAL MIX", "GLOBAL-STEAM")
 {
 	byte black : "KINGDOM HEARTS II FINAL MIX.exe", 0xABB347;
-	byte loadscreen: "KINGDOM HEARTS II FINAL MIX.exe", 0x7435D0;
+	byte loadscreen : "KINGDOM HEARTS II FINAL MIX.exe", 0x7435D0;
 	bool load : "KINGDOM HEARTS II FINAL MIX.exe", 0x8EC543;
 	uint start : "KINGDOM HEARTS II FINAL MIX.exe", 0xBEE630, 0x1AC;
 	uint roomTransition : "KINGDOM HEARTS II FINAL MIX.exe", 0x7177B8;
@@ -46,7 +46,7 @@ state("KINGDOM HEARTS II FINAL MIX", "GLOBAL-STEAM")
 state("KINGDOM HEARTS II FINAL MIX", "RE-FINED")
 {
 	byte black : "KINGDOM HEARTS II FINAL MIX.exe", 0xAB8BC7;
-	byte loadscreen: "KINGDOM HEARTS II FINAL MIX.exe", 0x741320;
+	byte loadscreen : "KINGDOM HEARTS II FINAL MIX.exe", 0x741320;
 	bool load : "KINGDOM HEARTS II FINAL MIX.exe", 0x8E9DA3;
 	uint start : "KINGDOM HEARTS II FINAL MIX.exe", 0x00BEBD90, 0x1AC;
 	uint roomTransition : "KINGDOM HEARTS II FINAL MIX.exe", 0x715568;
@@ -75,15 +75,12 @@ init
 {
 	vars.infinalfights = 0;
 	var ba = modules.First().BaseAddress;
-	print(modules.First().ModuleMemorySize.ToString());
-	Thread.Sleep(2000);
-	if (modules.First().ModuleMemorySize == 46313472) { 
-        	if (memory.ReadValue<int>(ba + 0x9A70B0) == 0x4A32484B) {
-            		version = "GLOBAL-EPIC";
+	if (modules.First().ModuleMemorySize == 46313472) {
+        if (memory.ReadValue<int>(ba + 0x80) == 0x33B227B1) {
+			version = "GLOBAL-EPIC";
 		} 
-		else if (memory.ReadValue<int>(ba + 0x9A9830) == 0x4A32484B){
+		else if (memory.ReadValue<int>(ba + 0x80) == 0x034946CA){
 			version = "GLOBAL-STEAM";
-			print(version);
 		}
 	}
 	else if(modules.First().ModuleMemorySize == 47538176){
@@ -98,10 +95,12 @@ init
 	else {
 		version = "NOVERSIONFOUND";
 	}
+	print(version);
 }
 
 start 
 {
+	print("START");
 	if (version=="EMULATOR") {
 		if (current.startup_menus == 0 && old.startup_menus == 2) {
 			if (current.start == 2844832) {
@@ -125,17 +124,18 @@ start
 
 isLoading
 {
+	print("IS LOADING");
 	if (version=="EMULATOR" || version=="EMULATOR-EX") {
 		if(current.prevWorld==4 && current.prevRoom==26){
 			if(current.black==128){
 				return true;
 			}
-			if(current.black==0 && current.load !=0){
+			if(current.black == 0 && current.load !=0){
 				return true;
 			}
 		}
-		if(current.prevWorld!=4 && current.prevRoom!=26) {
-			return ((current.black == 128 || current.load != 0) && current.keyholetransition==0);
+		if(current.prevWorld !=4 && current.prevRoom !=26) {
+			return ((current.black == 128 || current.load != 0) && current.keyholetransition == 0);
 		}
 		return false;
 	}
@@ -146,6 +146,7 @@ isLoading
 
 split
 {
+	print("SPLIT");
 	if (version=="EMULATOR" || version=="EMULATOR-EX") {
 		if(vars.infinalfights==0) {
 			if(current.world==18 && current.room==25) {
@@ -153,8 +154,8 @@ split
 			}
 		}
 		if(vars.infinalfights==1) {
-			if(old.btlend!=4 && current.world==18 && current.room==20 && current.btlend==4) {
-				return (true);
+			if(old.btlend !=4 && current.world==18 && current.room==20 && current.btlend==4) {
+				return true;
 			}
 		}
 	}
@@ -165,8 +166,8 @@ split
 			}
 		}
 		if(vars.infinalfights==1) {
-			if(old.btlend!=4 && current.world==18 && current.room==20 && current.btlend==4) {
-				return (true);
+			if(old.btlend !=4 && current.world==18 && current.room==20 && current.btlend==4) {
+				return true;
 			}
 		}
 	}
