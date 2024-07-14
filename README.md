@@ -45,7 +45,7 @@ What you need:
 > :ballot_box_with_check: Check the `Split` box to have the timer auto-stop when you defeat Final Xemnas
 
 
-## How to add timers to Livesplit Layout:
+## (Manual) How to add timers to Livesplit Layout:
 
 5. You will want two timers in your Livesplit layout in order for the script to work. You can add more timers to your layout by clicking the big `+` button again in the Layout Editor screen and selecting `Timer`.
    * Create one timer and set it's `Timing Method` to `Real Time`
