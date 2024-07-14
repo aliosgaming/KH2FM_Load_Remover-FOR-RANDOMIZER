@@ -9,8 +9,26 @@
 What you need:
  - [Livesplit](https://livesplit.org/) <- Your timer
  - [Livesplit.KH2Randomizer.asl](https://github.com/aliosgaming/KH2FM_Load_Remover-FOR-RANDOMIZER/releases/tag/v2.3) <- The script you downloaded from this github
+
+## (Automated-ish) How to install the load remover and basic layout to Livesplit:
+
+1. Download this basic layout file for Livesplit [HERE](TempDownloadLink). It adds two timers to the Livesplit layout. One for Real time and another for Game time (which pasues on loads).
+
+2. Right click Livesplit and go to `Open Layout` then click `From File...` and navigate to the layout file you downloaded. It should load in the two timers (top is Real time and bottom is Game time)
+
+3. Now, right click your Livesplit window and select `Edit Splits`.
+
+4. In the `Game Name` text box manually type in `Kingdom Hearts II Final Mix Randomizer`. (The randomizer is not currently in the drop down list so you must type out the whole name manually)
+
+5. You should see a message about the load remover pop up below the `Start Timer at:` text. (You can reference the image below) Next to that message click the `Activate` button.
+
+6. Now, click on the `Settings` button and in the new window enable the `Start` and `Split` boxes. These will enable Livesplit to automatically start and stop the timer for you. You can close the `Settings` window now.
+
+7. Finally, back on the `Edit Splits` window, enable the `Use Layout` box and use the drop down menu to select your `KH2FM_Rando_Layout` file. You have now completed the setup. 
+
+![Splits Example](LinkToImage)
  
-## How to install the load remover to Livesplit:
+## (Manual) How to install the load remover to Livesplit:
  
 1. Right click your Livesplit window and select `Edit Layout`.
 
