@@ -1,15 +1,10 @@
 # KH2FM Load Remover for PCSX2 v1.6, PCSX2-EX, and PC
 
-**(Updated for Steam Release)**
-
-*Created by: AliosGaming and ZakTheRobot* 
+**(Updated for Steam Release)** *Created by: AliosGaming and ZakTheRobot* 
 
 ***DISCLAIMER: This Load Remover is only intended for use during KH2FM Randomizer Races and Practice***
 
-What you need:
- - [Livesplit](https://livesplit.org/) <- Your timer
- - [Livesplit.KH2Randomizer.asl](https://github.com/aliosgaming/KH2FM_Load_Remover-FOR-RANDOMIZER/releases/tag/v2.3) <- The script you downloaded from this github
-
+This guide assumes you have already installed [Livesplit](https://livesplit.org/) on your PC
 ## (Automated-ish) How to install the load remover and basic layout to Livesplit:
 
 > [!NOTE]
@@ -32,6 +27,10 @@ What you need:
 ![Splits Example](edit_splits.png)
  
 ## (Manual) How to install the load remover to Livesplit:
+
+What you need:
+ - [Livesplit](https://livesplit.org/) <- Your timer
+ - [Livesplit.KH2Randomizer.asl](https://github.com/aliosgaming/KH2FM_Load_Remover-FOR-RANDOMIZER/releases/tag/v2.3) <- The script you downloaded from this github
  
 1. Right click your Livesplit window and select `Edit Layout`.
 
