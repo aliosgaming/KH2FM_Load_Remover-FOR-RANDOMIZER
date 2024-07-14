@@ -1,6 +1,8 @@
 # KH2FM Load Remover for PCSX2 v1.6, PCSX2-EX, and PC
 
-*Created by: AliosGaming and ZakTheRobot* (Updated for Steam Release)
+**(Updated for Steam Release)**
+
+*Created by: AliosGaming and ZakTheRobot* 
 
 ***DISCLAIMER: This Load Remover is only intended for use during KH2FM Randomizer Races and Practice***
 
