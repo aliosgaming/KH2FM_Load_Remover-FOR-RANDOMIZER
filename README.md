@@ -12,6 +12,9 @@ What you need:
 
 ## (Automated-ish) How to install the load remover and basic layout to Livesplit:
 
+> [!NOTE]
+> *If you previously had the Load Remover installed in your Livesplit layout you should remove the `Scriptable Auto Splitter` from your layout settings and then skip to step 3.*
+
 1. Download this basic layout file for Livesplit [HERE](https://raw.githubusercontent.com/aliosgaming/KH2FM_Load_Remover-FOR-RANDOMIZER/main/KH2FM_Rando_Layout.lsl) (Right click + `Save Link as...`). It adds two timers to the Livesplit layout. One for Real time and another for Game time (which pauses on loads).
 
 2. Right click Livesplit and go to `Open Layout` then click `From File...` and navigate to the layout file you downloaded. It should load in the two timers (top is Real time and bottom is Game time)
