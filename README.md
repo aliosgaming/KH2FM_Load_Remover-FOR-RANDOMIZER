@@ -2,7 +2,7 @@
 
 **(Updated for Steam Release)** *Created by: AliosGaming and ZakTheRobot* 
 
-v2.4 update provided by Equations and Geek. Huge thanks to both of them.
+**v2.4 update provided by Equations and Geek. Huge thanks to both of them.**
 
 ***DISCLAIMER: This Load Remover is only intended for use during KH2FM Randomizer Races and Practice***
 
