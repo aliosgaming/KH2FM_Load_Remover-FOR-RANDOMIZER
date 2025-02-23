@@ -32,7 +32,7 @@ This guide assumes you have already installed [Livesplit](https://livesplit.org/
 
 What you need:
  - [Livesplit](https://livesplit.org/) <- Your timer
- - [Livesplit.KH2Randomizer.asl](https://github.com/aliosgaming/KH2FM_Load_Remover-FOR-RANDOMIZER/releases/tag/v2.3) <- The script you downloaded from this github
+ - [Livesplit.KH2Randomizer.asl](https://github.com/aliosgaming/KH2FM_Load_Remover-FOR-RANDOMIZER/releases/latest) <- The script you downloaded from this github
  
 1. Right click your Livesplit window and select `Edit Layout`.
 
